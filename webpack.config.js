@@ -30,5 +30,14 @@ module.exports = {
     new OpenBrowserPlugin({
       url: 'http://localhost:8080'
     })
-  ]
+  ],
+  module:{
+    loaders:[
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+        include: APP_PATH
+      }
+    ]
+  }
 };
