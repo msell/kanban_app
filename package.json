@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/msell/kanban_app#readme",
   "devDependencies": {
+    "babel-loader": "^5.3.3",
     "css-loader": "^0.22.0",
     "html-webpack-plugin": "^1.6.2",
     "open-browser-webpack-plugin": "0.0.1",
@@ -24,5 +25,9 @@
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.12.1",
     "webpack-merge": "^0.2.0"
+  },
+  "dependencies": {
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
   }
 }
