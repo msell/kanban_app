@@ -11,50 +11,47 @@ var APP_PATH = path.resolve(ROOT_PATH, 'app');
 process.env.BABEL_ENV = TARGET;
 
 var common = {
-  entry: APP_PATH,
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-        include: APP_PATH
-      },
-      {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: APP_PATH
-      }
-    ]
-  },
-  plugins: [
-    new HtmlwebpackPlugin({
-      title: 'Kanban app'
-    })
-  ]
-};
-
-if(TARGET === 'start' || !TARGET) {
-  module.exports = merge(common, {
-    devtool: 'eval-source-map',
-    devServer: {
-      historyApiFallback: true,
-      hot: true,
-      inline: true,
-      progress: true,
-
-      // parse host and port from env so this is easy
-      // to customize
-      host: process.env.HOST,
-      port: process.env.PORT
+    entry: APP_PATH,
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+    module: {
+        loaders: [{
+            test: /\.css$/,
+            loaders: ['style', 'css'],
+            include: APP_PATH
+        }, {
+            test: /\.jsx?$/,
+            loaders: ['babel'],
+            include: APP_PATH
+        }]
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new OpenBrowserPlugin({
-       url: 'http://localhost:8080'
-     })
+        new HtmlwebpackPlugin({
+            title: 'Kanban app'
+        })
     ]
-  });
+};
+
+if (TARGET === 'start' || !TARGET) {
+    module.exports = merge(common, {
+        devtool: 'eval-source-map',
+        devServer: {
+            historyApiFallback: true,
+            hot: true,
+            inline: true,
+            progress: true,
+
+            // parse host and port from env so this is easy
+            // to customize
+            host: process.env.HOST,
+            port: process.env.PORT
+        },
+        plugins: [
+            new webpack.HotModuleReplacementPlugin(),
+            new OpenBrowserPlugin({
+                url: 'http://localhost:8080'
+            })
+        ]
+    });
 }
