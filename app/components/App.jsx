@@ -18,10 +18,10 @@ export default class App extends React.Component {
 			},
 			{
 				id: uuid.v4(),
-				task: 'Do laundry'
+				task: 'Learn Babel'
 			} 
 			]
-		}; 
+		};
 
 		this.addNote = this.addNote.bind(this);
 	}
@@ -39,9 +39,13 @@ export default class App extends React.Component {
 		const notes = this.state.notes;
 		return (
 			<div>
-			<button className="add-note" onClick={this.addNote}>+</button>
-			<Notes items={notes} />
+				<button className="add-note" onClick={this.addNote}>+</button>
+				<Notes items={notes} onEdit={this.editNote} />
 			</div>
 			);
+	}
+
+	editNote(noteId, task){
+		console.log('note edited', noteId, task);
 	}
 }
