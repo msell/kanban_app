@@ -1,14 +1,14 @@
 export default{
   // TODO: Consider refactoring using localForage https://github.com/mozilla/localForage
-  get: function(k){
-    try{
-      return JSON.Parse(localStorage.getItem(k));
+   get: function(k) {
+    try {
+      return JSON.parse(localStorage.getItem(k));
     }
-    catch(e){
+    catch(e) {
       return null;
     }
   },
-  set: function(k, v){
+  set: function(k, v) {
     localStorage.setItem(k, JSON.stringify(v));
   }
 };

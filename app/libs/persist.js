@@ -1,19 +1,18 @@
 import makeFinalStore from 'alt/utils/makeFinalStore';
 
-export default function(alt, storage, storeName){
+export default function(alt, storage, storeName) {
   const finalStore = makeFinalStore(alt);
 
-  try{
+  try {
     alt.bootstrap(storage.get(storeName));
   }
-  catch(e){
+  catch(e) {
     console.error('Failed to bootstrap data', e);
   }
 
   finalStore.listen(() => {
-   if(!storage.get('debug')) {
-    storage.set(storeName, alt.takeSnapshot());
-  }
-});
+    if(!storage.get('debug')) {
+      storage.set(storeName, alt.takeSnapshot());
+    }
+  });
 }
-
